@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="mru_hacks_2026"
-run/main_scene="uid://dku6jsltk0bgn"
+run/main_scene="uid://clvxlslmavfid"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
