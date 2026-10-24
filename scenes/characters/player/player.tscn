@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://8x5esfvepgfa"]
+
+[ext_resource type="Texture2D" uid="uid://dly0edubio7ui" path="res://assets/player_assets/pixil-frame-0.png" id="1_7uws0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ptfn"]
+radius = 19.026299
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ptfn"]
+size = Vector2(32, 60)
+
+[node name="player" type="CharacterBody2D" unique_id=841658602]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1740646460]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=563524475]
+position = Vector2(4.7683716e-07, -32)
+scale = Vector2(1.0555556, 1)
+texture = ExtResource("1_7uws0")
+
+[node name="Walking_collision" type="CollisionShape2D" parent="." unique_id=339639609]
+shape = SubResource("CircleShape2D_1ptfn")
+
+[node name="Sight_box" type="CollisionShape2D" parent="." unique_id=1414677494]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_1ptfn")
+debug_color = Color(0.8649682, 0.33612192, 0.32606658, 0.41960785)
