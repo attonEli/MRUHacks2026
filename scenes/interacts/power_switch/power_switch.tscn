@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://iso4lr7aqfp0"]
+
+[ext_resource type="Script" uid="uid://lfkdb5dltvmj" path="res://scenes/interacts/power_switch/power_switch.gd" id="1_j5rcn"]
+[ext_resource type="Texture2D" uid="uid://oldjas6uwf6c" path="res://assets/interacts/power_switch/button_OFF.png" id="2_4o64e"]
+[ext_resource type="Texture2D" uid="uid://dtjrqxunglp4l" path="res://assets/interacts/power_switch/button_ON.png" id="2_xh6k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ptfn"]
+size = Vector2(12, 12)
+
+[node name="Button" type="Area2D" unique_id=445816109]
+script = ExtResource("1_j5rcn")
+pressed_texture = ExtResource("2_xh6k0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=53902105]
+texture = ExtResource("2_4o64e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362905932]
+shape = SubResource("RectangleShape2D_1ptfn")
