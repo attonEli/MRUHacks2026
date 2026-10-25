@@ -1,27 +1,22 @@
-extends Area2D
+extends Interactable
 
-# Allows you to drag and drop your "pressed" image right into the Inspector
+@export_range(1, 4) var switch_number := 1
 @export var pressed_texture: Texture2D
 
-# Keeps track of whether the button has already been triggered
-var is_activated: bool = false
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var off_texture: Texture2D = sprite.texture
+
 
 func _ready() -> void:
-	print("TESTING")
-	body_entered.connect(_on_body_entered)
+	super()
+	GameState.switch_changed.connect(_on_switch_changed)
 
-func _on_body_entered(body: Node2D) -> void:
-	# If it's already activated, do nothing (prevents re-triggering)
-	if is_activated == true:
+
+func interact() -> void:
+	GameState.use_switch(switch_number)
+
+
+func _on_switch_changed(number: int, is_on: bool) -> void:
+	if number != switch_number:
 		return
-		
-	# Check if the player stepped on it
-	if body.is_in_group("player"):
-		is_activated = true
-		print("Button pressed and locked!")
-		
-		# Change the texture if you assigned one in the inspector
-		if pressed_texture:
-			$Sprite2D.texture = pressed_texture
-		
-		# TODO: Trigger whatever the button opens (like opening a door)
+	sprite.texture = pressed_texture if is_on else off_texture

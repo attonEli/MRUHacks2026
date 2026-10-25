@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://bjcqv4wmi6id8"]
 
-[ext_resource type="Script" path="res://scenes/UI/hud/hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://bynpeil5s4epu" path="res://scenes/UI/hud/hud.gd" id="1_hud"]
+[ext_resource type="Script" path="res://scenes/UI/telegraph/telegraph_panel.gd" id="2_telegraph"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 16.0
@@ -18,12 +19,12 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Hud" type="CanvasLayer"]
+[node name="Hud" type="CanvasLayer" unique_id=653778535]
 process_mode = 3
 layer = 10
 script = ExtResource("1_hud")
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." unique_id=593783910]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CountdownLabel" type="Label" parent="Root"]
+[node name="CountdownLabel" type="Label" parent="Root" unique_id=1640395912]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -50,7 +51,7 @@ text = "POWER: 15.0 s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MessagePanel" type="PanelContainer" parent="Root"]
+[node name="MessagePanel" type="PanelContainer" parent="Root" unique_id=564758010]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -67,7 +68,7 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="MessageLabel" type="Label" parent="Root/MessagePanel"]
+[node name="MessageLabel" type="Label" parent="Root/MessagePanel" unique_id=426051616]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
@@ -77,7 +78,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="KeyPicker" type="PanelContainer" parent="Root"]
+[node name="KeyPicker" type="PanelContainer" parent="Root" unique_id=993215108]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -93,11 +94,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="VBox" type="VBoxContainer" parent="Root/KeyPicker"]
+[node name="VBox" type="VBoxContainer" parent="Root/KeyPicker" unique_id=1711788253]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="PickerTitle" type="Label" parent="Root/KeyPicker/VBox"]
+[node name="PickerTitle" type="Label" parent="Root/KeyPicker/VBox" unique_id=400518999]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
@@ -107,18 +108,120 @@ Which key do you use?"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="KeyList" type="VBoxContainer" parent="Root/KeyPicker/VBox"]
+[node name="KeyList" type="VBoxContainer" parent="Root/KeyPicker/VBox" unique_id=847686770]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="CancelButton" type="Button" parent="Root/KeyPicker/VBox"]
+[node name="CancelButton" type="Button" parent="Root/KeyPicker/VBox" unique_id=171844669]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Cancel (Esc)"
 
-[node name="MessageTimer" type="Timer" parent="."]
+[node name="DocumentPanel" type="PanelContainer" parent="Root" unique_id=1618792830]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -230.0
+offset_right = 320.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/DocumentPanel" unique_id=276022345]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DocTitle" type="Label" parent="Root/DocumentPanel/VBox" unique_id=1914990646]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "Document title"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/DocumentPanel/VBox" unique_id=34460623]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DocBody" type="Label" parent="Root/DocumentPanel/VBox/ScrollContainer" unique_id=400213057]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="DocCloseButton" type="Button" parent="Root/DocumentPanel/VBox" unique_id=2083712474]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Close (Esc)"
+
+[node name="TelegraphPanel" type="PanelContainer" parent="Root" unique_id=1739204451]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -170.0
+offset_right = 340.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+script = ExtResource("2_telegraph")
+
+[node name="VBox" type="VBoxContainer" parent="Root/TelegraphPanel" unique_id=1093857261]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TelegraphTitle" type="Label" parent="Root/TelegraphPanel/VBox" unique_id=582039117]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 28
+text = "TELEGRAPH"
+horizontal_alignment = 1
+
+[node name="TelegraphHelp" type="Label" parent="Root/TelegraphPanel/VBox" unique_id=1460927735]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "Tap SPACE = dot   ·   Hold SPACE = dash
+Backspace = undo   ·   Enter = send   ·   Esc = leave"
+horizontal_alignment = 1
+
+[node name="TapeLabel" type="Label" parent="Root/TelegraphPanel/VBox" unique_id=2017384650]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LeaveButton" type="Button" parent="Root/TelegraphPanel/VBox" unique_id=884612093]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+text = "Leave (Esc)"
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=530155696]
 unique_name_in_owner = true
 one_shot = true

@@ -13,6 +13,11 @@ signal item_added(item_id: String)
 signal switch_changed(switch_number: int, is_on: bool)
 signal message_shown(text: String)
 
+signal document_shown(title: String, body: String)
+
+signal telegraph_opened
+signal game_over(ending: String)
+
 signal countdown_started(seconds: float)
 signal puzzle_failed(reason: String)
 signal cooldown_finished
@@ -26,6 +31,10 @@ const ITEM_NAMES := {
 	KEY_Y: "key_y",
 	KEY_Z: "key_z",
 	KEY_MASTER: "key_master",
+	KEY_CABINET: "key_cabinet",
+	MANUAL: "switch_manual",
+	MORSE_SHEET: "morse_code_sheet",
+	MAP: "survivor_map",
 }
 
 const SWITCH_KEYS := {
@@ -33,6 +42,27 @@ const SWITCH_KEYS := {
 	2: KEY_X,
 	3: KEY_Y,
 	4: KEY_MASTER,
+}
+
+const MORSE := {
+	"A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.",
+	"G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..",
+	"M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.",
+	"S": "...", "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-",
+	"Y": "-.--", "Z": "--..",
+	"0": "-----", "1": ".----", "2": "..---", "3": "...--", "4": "....-",
+	"5": ".....", "6": "-....", "7": "--...", "8": "---..", "9": "----.",
+}
+
+# Placeholder call signs: replace with the two call signs from the story.
+const CALL_SIGNS := {
+	"rescue": "K7R",
+	"enemy": "W3X",
+}
+
+const ENDINGS := {
+	"rescue": "Rescue ending text goes here.",
+	"enemy": "Enemy ending text goes here.",
 }
 
 signal item_removed(item_id: String)
@@ -208,6 +238,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		KEY_9: _debug_pick_key(2)
 		KEY_0: _debug_pick_key(3)
 		KEY_K: _debug_give_all_items()
+		KEY_P: _debug_restore_power()
 		KEY_T: print("[DEBUG] Time left: ", get_countdown_left())
 
 
@@ -215,3 +246,41 @@ func _debug_give_all_items() -> void:
 	for item in [KEY_X, KEY_Y, KEY_Z, KEY_MASTER, KEY_CABINET, MANUAL, MORSE_SHEET, MAP]:
 		add_item(item)
 	print("[DEBUG] Gave all items: ", inventory)
+
+
+func _debug_restore_power() -> void:
+	countdown_timer.stop()
+	is_powered = true
+	power_restored.emit()
+	print("[DEBUG] Power restored")
+
+
+func show_document(title: String, body: String) -> void:
+	document_shown.emit(title, body)
+
+
+# --- Telegraph -------------------------------------------------------------
+
+func to_morse(text: String) -> String:
+	var out := ""
+	for letter in text.to_upper():
+		out += MORSE.get(letter, "")
+	return out
+
+
+func open_telegraph() -> void:
+	if not is_powered:
+		show_message("The telegraph is dead. There's no power.")
+		return
+	telegraph_opened.emit()
+
+
+## Gaps between letters are ignored, so only the dots and dashes have to match.
+## Returns true if the signal matched a call sign (the game ends).
+func send_telegraph(symbols: String) -> bool:
+	for ending in CALL_SIGNS:
+		if symbols == to_morse(CALL_SIGNS[ending]):
+			game_over.emit(ending)
+			return true
+	show_message("Static. Nobody answers that signal.")
+	return false

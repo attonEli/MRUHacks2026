@@ -2,11 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="1_j8ivh"]
 [ext_resource type="PackedScene" uid="uid://iso4lr7aqfp0" path="res://scenes/interacts/power_switch/power_switch.tscn" id="2_nd71p"]
+[ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="3_tele"]
+[ext_resource type="PackedScene" path="res://scenes/interacts/cabinet/cabinet.tscn" id="4_cab"]
+[ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="5_pick"]
 
 [node name="Test_scene" type="Node2D" unique_id=1738987247]
 
 [node name="Button" parent="." unique_id=1594633130 instance=ExtResource("2_nd71p")]
 position = Vector2(743, 371)
+
+[node name="Telegraph" parent="." unique_id=1288405713 instance=ExtResource("3_tele")]
+position = Vector2(520, 362)
+
+[node name="Cabinet" parent="." unique_id=1960332185 instance=ExtResource("4_cab")]
+position = Vector2(640, 220)
+
+[node name="CabinetKey" parent="." unique_id=761209934 instance=ExtResource("5_pick")]
+position = Vector2(640, 500)
+item_id = "key_cabinet"
 
 [node name="player" parent="." unique_id=841658602 instance=ExtResource("1_j8ivh")]
 position = Vector2(640, 362)

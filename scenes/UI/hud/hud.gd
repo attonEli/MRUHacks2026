@@ -3,6 +3,8 @@ extends CanvasLayer
 ## - MessagePanel: shows every GameState.show_message() text for a few seconds.
 ## - CountdownLabel: shows the switch countdown, then the cooldown after a failure.
 ## - KeyPicker: opens when a locked switch is used, so the player picks a key.
+## - DocumentPanel: shows notes/manuals, and the ending text when the game is won.
+## - TelegraphPanel: the Morse minigame (its own script, telegraph_panel.gd).
 ## Runs as an autoload (process_mode = Always) so it keeps working while the game
 ## is paused for the key picker.
 
@@ -21,21 +23,30 @@ const COLOR_COOLDOWN := Color(0.6, 0.6, 0.6)
 @onready var picker_title: Label = %PickerTitle
 @onready var key_list: VBoxContainer = %KeyList
 @onready var cancel_button: Button = %CancelButton
+@onready var document_panel: PanelContainer = %DocumentPanel
+@onready var doc_title: Label = %DocTitle
+@onready var doc_body: Label = %DocBody
+@onready var doc_close_button: Button = %DocCloseButton
 
 var _pending_switch := 0
+var _game_finished := false
 
 
 func _ready() -> void:
 	countdown_label.hide()
 	message_panel.hide()
 	key_picker.hide()
+	document_panel.hide()
 
 	message_timer.wait_time = MESSAGE_SECONDS
 	message_timer.timeout.connect(message_panel.hide)
 	cancel_button.pressed.connect(_close_key_picker)
+	doc_close_button.pressed.connect(_close_document)
 
 	GameState.message_shown.connect(_on_message_shown)
 	GameState.key_choice_needed.connect(_on_key_choice_needed)
+	GameState.document_shown.connect(_on_document_shown)
+	GameState.game_over.connect(_on_game_over)
 
 
 func _process(_delta: float) -> void:
@@ -111,3 +122,30 @@ func _unhandled_input(event: InputEvent) -> void:
 	if key_picker.visible and event.is_action_pressed("ui_cancel"):
 		_close_key_picker()
 		get_viewport().set_input_as_handled()
+	elif document_panel.visible and event.is_action_pressed("ui_cancel"):
+		_close_document()
+		get_viewport().set_input_as_handled()
+
+
+# --- Document popup / ending -----------------------------------------------
+
+func _on_document_shown(title: String, body: String) -> void:
+	doc_title.text = title
+	doc_body.text = body
+	document_panel.show()
+	get_tree().paused = true
+	doc_close_button.grab_focus()
+
+
+func _close_document() -> void:
+	if _game_finished:
+		get_tree().quit()
+		return
+	document_panel.hide()
+	get_tree().paused = false
+
+
+func _on_game_over(ending: String) -> void:
+	_game_finished = true
+	_on_document_shown("THE END", GameState.ENDINGS[ending])
+	doc_close_button.text = "Quit"
