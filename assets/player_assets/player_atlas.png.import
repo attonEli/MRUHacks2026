@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7kl7rrdorap3"
-path="res://.godot/imported/pixil-frame-0 (1).png-32ebca6c557979b1df01cd461bbe17be.ctex"
+path="res://.godot/imported/player_atlas.png-2320854184a50d5509dc84664f9eaffd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_assets/pixil-frame-0 (1).png"
-dest_files=["res://.godot/imported/pixil-frame-0 (1).png-32ebca6c557979b1df01cd461bbe17be.ctex"]
+source_file="res://assets/player_assets/player_atlas.png"
+dest_files=["res://.godot/imported/player_atlas.png-2320854184a50d5509dc84664f9eaffd.ctex"]
 
 [params]
 

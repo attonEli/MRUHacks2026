@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://o5cobspj7p2n"]
+
+[ext_resource type="Script" uid="uid://ddt4uqlxmcr3x" path="res://scenes/UI/pausebutton.gd" id="1_4ks8w"]
+[ext_resource type="Texture2D" uid="uid://drru8k240exmb" path="res://assets/UI/pixil-frame-0 (2).png" id="2_6rsu1"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_686vu"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_hss88"]
+events = [SubResource("InputEventKey_686vu")]
+
+[node name="pausebutton" type="Control" unique_id=135114691]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4ks8w")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=498452249]
+top_level = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 32.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_hss88")
+texture_normal = ExtResource("2_6rsu1")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
