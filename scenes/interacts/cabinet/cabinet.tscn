@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/interacts/cabinet/cabinet.gd" id="1_cab"]
+[ext_resource type="Texture2D" uid="uid://baqnqn7uuee1k" path="res://icon.svg" id="2_icon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cab"]
+size = Vector2(72, 72)
+
+[node name="Cabinet" type="Area2D" unique_id=1402957713]
+script = ExtResource("1_cab")
+title = "Morse Code"
+body = "• = short tap      — = long press
+
+A   • —               B   — • • •           C   — • — •
+D   — • •             E   •                 F   • • — •
+G   — — •             H   • • • •           I   • •
+J   • — — —           K   — • —             L   • — • •
+M   — —               N   — •               O   — — —
+P   • — — •           Q   — — • —           R   • — •
+S   • • •             T   —                 U   • • —
+V   • • • —           W   • — —             X   — • • —
+Y   — • — —           Z   — — • •           0   — — — — —
+1   • — — — —         2   • • — — —         3   • • • — —
+4   • • • • —         5   • • • • •         6   — • • • •
+7   — — • • •         8   — — — • •         9   — — — — •"
+required_item = "key_cabinet"
+locked_message = "The file cabinet is locked. There's a tiny keyhole."
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1845520961]
+modulate = Color(0.65, 0.5, 0.35, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=530812274]
+shape = SubResource("RectangleShape2D_cab")
