@@ -1,18 +1,14 @@
 [gd_scene format=3 uid="uid://c44ov2h7dfay4"]
 
 [ext_resource type="Texture2D" uid="uid://dht6rf46y2rwc" path="res://assets/UI/menu_button_off.png" id="1_4v3wo"]
+[ext_resource type="Script" uid="uid://bhx77tn5hoyxj" path="res://scenes/UI/pausemenu.gd" id="1_8e4jk"]
 [ext_resource type="Texture2D" uid="uid://dn1ouo1yrdx3f" path="res://assets/UI/menu_button_on.png" id="2_8e4jk"]
 
-[node name="pausemenu" type="Control" unique_id=1995546421]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="pausemenu" type="CanvasLayer" unique_id=1626579834]
+process_mode = 2
+script = ExtResource("1_8e4jk")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1314201546]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,7 +18,6 @@ color = Color(0, 0, 0, 0.039215688)
 
 [node name="resume" type="TextureButton" parent="." unique_id=24691375]
 custom_minimum_size = Vector2(-320, 0)
-layout_mode = 0
 offset_left = 480.0
 offset_top = 245.0
 offset_right = 1001.4291
@@ -51,7 +46,6 @@ vertical_alignment = 1
 
 [node name="quittomain" type="TextureButton" parent="." unique_id=1466747538]
 custom_minimum_size = Vector2(-320, 0)
-layout_mode = 0
 offset_left = 480.0
 offset_top = 371.0
 offset_right = 1001.4291
@@ -77,3 +71,6 @@ theme_override_font_sizes/font_size = 55
 text = "[ Main Menu ]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="quittomain" to="." method="_on_quittomain_pressed"]
