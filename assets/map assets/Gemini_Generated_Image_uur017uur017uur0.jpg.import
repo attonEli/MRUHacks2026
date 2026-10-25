@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oldjas6uwf6c"
-path="res://.godot/imported/button_OFF.png-2fd66de4c6f48b1e0cfa4a87fb9bc781.ctex"
+uid="uid://cl2xcy62nxcnh"
+path="res://.godot/imported/Gemini_Generated_Image_uur017uur017uur0.jpg-b0d914a5f50b71adfb7a3d0c1721f29b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interacts/power_switch/button_OFF.png"
-dest_files=["res://.godot/imported/button_OFF.png-2fd66de4c6f48b1e0cfa4a87fb9bc781.ctex"]
+source_file="res://assets/map assets/Gemini_Generated_Image_uur017uur017uur0.jpg"
+dest_files=["res://.godot/imported/Gemini_Generated_Image_uur017uur017uur0.jpg-b0d914a5f50b71adfb7a3d0c1721f29b.ctex"]
 
 [params]
 
