@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://clvxlslmavfid"]
 
-[ext_resource type="Texture2D" uid="uid://cwxb7edo8axt7" path="res://assets/map assets/map.jpeg" id="1_shbhe"]
+[ext_resource type="Texture2D" uid="uid://cwxb7edo8axt7" path="res://assets/map assets/map.jpeg" id="1_tqkkf"]
+[ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_a2pkv"]
+[ext_resource type="PackedScene" uid="uid://iso4lr7aqfp0" path="res://scenes/interacts/power_switch/power_switch.tscn" id="3_a2pkv"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_b1lj4"]
 a = Vector2(9, 353)
@@ -313,8 +315,8 @@ b = Vector2(74.904785, 0.0005493164)
 b = Vector2(-1.5050049, -54.384995)
 
 [node name="Map" type="Sprite2D" unique_id=2093066837]
-position = Vector2(1413, 215)
-texture = ExtResource("1_shbhe")
+position = Vector2(1271, -69)
+texture = ExtResource("1_tqkkf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1562000247]
 
@@ -701,3 +703,15 @@ shape = SubResource("SegmentShape2D_kndak")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D10/CollisionShape2D" unique_id=1955553821]
 position = Vector2(74.40979, 0.38554382)
 shape = SubResource("SegmentShape2D_y7wq3")
+
+[node name="player" parent="." unique_id=841658602 instance=ExtResource("2_a2pkv")]
+position = Vector2(-377, -210)
+
+[node name="Button" parent="." unique_id=445816109 instance=ExtResource("3_a2pkv")]
+position = Vector2(219, -418)
+
+[node name="Button2" parent="." unique_id=1678248187 instance=ExtResource("3_a2pkv")]
+position = Vector2(-19, 545)
+
+[node name="Button3" parent="." unique_id=1420202959 instance=ExtResource("3_a2pkv")]
+position = Vector2(669, 501)

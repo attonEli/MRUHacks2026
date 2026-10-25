@@ -6,10 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ptfn"]
 radius = 19.026299
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ptfn"]
-size = Vector2(32, 60)
-
-[node name="player" type="CharacterBody2D" unique_id=841658602]
+[node name="player" type="CharacterBody2D" unique_id=841658602 groups=["player"]]
 script = ExtResource("1_t61fv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=563524475]
@@ -18,11 +15,7 @@ scale = Vector2(1.0555556, 1)
 texture = ExtResource("1_7uws0")
 
 [node name="Walking_collision" type="CollisionShape2D" parent="." unique_id=339639609 groups=["player"]]
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_1ptfn")
-
-[node name="Sight_box" type="CollisionShape2D" parent="." unique_id=1414677494]
-position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_1ptfn")
-debug_color = Color(0.8649682, 0.33612192, 0.32606658, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=120713899]
