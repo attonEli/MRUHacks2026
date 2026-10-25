@@ -11,13 +11,25 @@ func _physics_process(delta: float) -> void:
 func movement_loop() -> void:
 	move_direction.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	move_direction.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down"):
+		$AnimatedSprite2D.play("default")
+	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
+		$AnimatedSprite2D.play("default")
+	elif Input.is_action_pressed("ui_down"):
+		$AnimatedSprite2D.play("move_down")
+	elif Input.is_action_pressed("ui_up"):
+		$AnimatedSprite2D.play("move_up")
 	
-	#velocity = move_direction.normalized() * speed
+	elif Input.is_action_pressed("ui_left"):
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.play("move_sides")
+	elif Input.is_action_pressed("ui_right"):
+		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.play("move_sides")
 	
-	if move_direction.x < 0:
-		$Sprite2D.flip_h = true
-	elif move_direction.x > 0:
-		$Sprite2D.flip_h = false
+	else:
+		$AnimatedSprite2D.play("default")
+		
 	
 	velocity = move_direction.normalized() * speed
 	
