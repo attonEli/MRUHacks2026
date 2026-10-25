@@ -23,7 +23,7 @@ signal puzzle_failed(reason: String)
 signal cooldown_finished
 signal power_restored
 
-const COUNTDOWN_SECONDS := 15.0
+const COUNTDOWN_SECONDS := 30.0
 const COOLDOWN_SECONDS := 5.0 
 
 const ITEM_NAMES := {

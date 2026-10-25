@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://bs5pkqyadaxc2"]
 
 [ext_resource type="Texture2D" uid="uid://cl2xcy62nxcnh" path="res://assets/map assets/Gemini_Generated_Image_uur017uur017uur0.jpg" id="1_ta3x6"]
+[ext_resource type="PackedScene" uid="uid://iso4lr7aqfp0" path="res://scenes/interacts/power_switch/power_switch.tscn" id="2_f624j"]
 [ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_ta3x6"]
+[ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="3_3jtja"]
+[ext_resource type="PackedScene" uid="uid://dvv7j5vg8afvy" path="res://scenes/interacts/pickup/readable.tscn" id="4_dpqlu"]
+[ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="5_vuvwp"]
+[ext_resource type="PackedScene" uid="uid://bm36cx4ucx6r0" path="res://scenes/interacts/cabinet/cabinet.tscn" id="6_dpqlu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(78, 272.5)
@@ -106,6 +111,64 @@ metadata/_edit_lock_ = true
 position = Vector2(-418.5, 2472)
 shape = SubResource("RectangleShape2D_njqwk")
 metadata/_edit_lock_ = true
+
+[node name="Interactables" type="Node2D" parent="." unique_id=1699787679]
+
+[node name="switch1" parent="Interactables" unique_id=445816109 instance=ExtResource("2_f624j")]
+position = Vector2(1169, 339)
+
+[node name="switch2" parent="Interactables" unique_id=323689793 instance=ExtResource("2_f624j")]
+position = Vector2(1217, 1241)
+switch_number = 2
+
+[node name="switch3" parent="Interactables" unique_id=1726894984 instance=ExtResource("2_f624j")]
+position = Vector2(1183, 2215)
+switch_number = 3
+
+[node name="switch4" parent="Interactables" unique_id=36143093 instance=ExtResource("2_f624j")]
+position = Vector2(2185, 2434)
+switch_number = 4
+
+[node name="KeyX" parent="Interactables" unique_id=1924370088 instance=ExtResource("3_3jtja")]
+position = Vector2(380, 1358)
+
+[node name="KeyY" parent="Interactables" unique_id=1229099405 instance=ExtResource("3_3jtja")]
+position = Vector2(410, 1358)
+item_id = "key_y"
+
+[node name="KeyZ" parent="Interactables" unique_id=2022736169 instance=ExtResource("3_3jtja")]
+position = Vector2(440, 1358)
+item_id = "key_z"
+
+[node name="CabinetKey" parent="Interactables" unique_id=504735385 instance=ExtResource("3_3jtja")]
+position = Vector2(-933, 857)
+item_id = "key_cabinet"
+
+[node name="Manual" parent="Interactables" unique_id=388296552 instance=ExtResource("4_dpqlu")]
+position = Vector2(-602, 2591)
+title = "Breaker Manual"
+body = "BREAKER RESTART PROCEDURE
+
+The emergency breakers must be switched on in this exact order:
+
+        2   →   1   →   3   →   4
+
+Once the first breaker is on you have 15 seconds to finish the sequence. If you take too long, or use the wrong order, the system trips and every breaker resets.
+
+Each breaker is locked and needs its own key."
+display_name = "Manual"
+
+[node name="Telegraph" parent="Interactables" unique_id=1954683485 instance=ExtResource("5_vuvwp")]
+position = Vector2(1929, 2597)
+
+[node name="Cabinet" parent="Interactables" unique_id=1402957713 instance=ExtResource("6_dpqlu")]
+position = Vector2(2098, 356)
+
+[node name="Map" parent="Interactables" unique_id=1035613551 instance=ExtResource("4_dpqlu")]
+position = Vector2(2108, 1139)
+title = "Map"
+body = "who the other group is and how to reach them, including the call sign and a note to use the telegraph in the control room"
+display_name = "Map"
 
 [node name="player" parent="." unique_id=841658602 instance=ExtResource("2_ta3x6")]
 position = Vector2(-447, 420)

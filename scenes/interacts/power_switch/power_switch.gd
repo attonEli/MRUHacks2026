@@ -12,6 +12,12 @@ func _ready() -> void:
 	GameState.switch_changed.connect(_on_switch_changed)
 
 
+func get_display_name() -> String:
+	if display_name != "":
+		return display_name
+	return "Switch %d" % switch_number
+
+
 func interact() -> void:
 	GameState.use_switch(switch_number)
 
