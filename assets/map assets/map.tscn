@@ -2,6 +2,57 @@
 
 [ext_resource type="Texture2D" uid="uid://cl2xcy62nxcnh" path="res://assets/map assets/Gemini_Generated_Image_uur017uur017uur0.jpg" id="1_ta3x6"]
 [ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_ta3x6"]
+[ext_resource type="Texture2D" uid="uid://drru8k240exmb" path="res://assets/UI/pixil-frame-0 (2).png" id="3_f624j"]
+[ext_resource type="Script" uid="uid://drtdc7dg1gs85" path="res://assets/map assets/canvas_layer.gd" id="3_nqc2k"]
+[ext_resource type="Script" uid="uid://drp1c021453r5" path="res://assets/map assets/pause_button.gd" id="4_whoor"]
+[ext_resource type="Texture2D" uid="uid://ds1b6w6ddif6r" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035730.png" id="6_vh5x3"]
+[ext_resource type="Texture2D" uid="uid://dl4lrytla1o5w" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035835.png" id="7_mw81q"]
+[ext_resource type="Texture2D" uid="uid://l0c5ijbygdj" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035859.png" id="8_30ivl"]
+[ext_resource type="Texture2D" uid="uid://dmxs4mytxx0tb" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035924.png" id="9_wvext"]
+[ext_resource type="Texture2D" uid="uid://b455r3w0cqh8j" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035944.png" id="10_3qwb3"]
+[ext_resource type="Texture2D" uid="uid://cta1adbwn62be" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040005.png" id="11_e3f8q"]
+[ext_resource type="Texture2D" uid="uid://ccl0sx7vqpxc2" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040036.png" id="12_r8f4s"]
+[ext_resource type="Texture2D" uid="uid://c7lraugr8u5sy" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040113.png" id="13_06xqc"]
+[ext_resource type="Texture2D" uid="uid://d12qtakrnkfe2" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040131.png" id="14_6sxew"]
+[ext_resource type="Texture2D" uid="uid://csbss6g2p7mg4" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040151.png" id="15_dwpcd"]
+[ext_resource type="Texture2D" uid="uid://bv530tp0rhc5w" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040211.png" id="16_op0dp"]
+[ext_resource type="Texture2D" uid="uid://bjfd7nyq7p1sa" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040232.png" id="17_1wsan"]
+[ext_resource type="Texture2D" uid="uid://clvo4wl8xg4em" path="res://assets/map assets/ledges/Screenshot 2026-10-25 040255.png" id="18_4wqr6"]
+[ext_resource type="Texture2D" uid="uid://d0k0n0txsag20" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041019.png" id="19_30ivl"]
+[ext_resource type="Texture2D" uid="uid://ckm16pvis3qfi" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041111.png" id="20_wvext"]
+[ext_resource type="Texture2D" uid="uid://bw8ebky33s3br" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041250.png" id="21_wvext"]
+
+[sub_resource type="GDScript" id="GDScript_nqc2k"]
+script/source = "extends Sprite2D
+
+signal pause_pressed(origin: String)
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_texture_button_pressed() -> void:
+	pause_pressed.emit(\"pause_button\")
+"
+
+[sub_resource type="GDScript" id="GDScript_whoor"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(78, 272.5)
@@ -15,14 +66,22 @@ size = Vector2(92, 226)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
 size = Vector2(91, 230)
 
+[sub_resource type="InputEventKey" id="InputEventKey_686vu"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_whoor"]
+events = [SubResource("InputEventKey_686vu")]
+
 [node name="Map" type="Sprite2D" unique_id=2093066837]
 position = Vector2(1922, 232)
+script = SubResource("GDScript_nqc2k")
 metadata/_edit_lock_ = true
 
 [node name="GeminiGeneratedImageUur017Uur017Uur0" type="Sprite2D" parent="." unique_id=790354309]
 position = Vector2(630.0001, 1372.5)
 scale = Vector2(1.4041667, 1.4972098)
 texture = ExtResource("1_ta3x6")
+script = SubResource("GDScript_whoor")
 metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1768510473]
@@ -109,3 +168,99 @@ metadata/_edit_lock_ = true
 
 [node name="player2" parent="." unique_id=874414214 instance=ExtResource("2_ta3x6")]
 position = Vector2(-541, 253)
+
+[node name="Screenshot20261025035730" type="Sprite2D" parent="." unique_id=82863127]
+position = Vector2(-233, 1946)
+texture = ExtResource("6_vh5x3")
+
+[node name="Screenshot20261025035835" type="Sprite2D" parent="." unique_id=1831459816]
+position = Vector2(166.15561, 1504.3749)
+scale = Vector2(0.69230324, 0.7287739)
+texture = ExtResource("7_mw81q")
+
+[node name="Screenshot20261025035859" type="Sprite2D" parent="." unique_id=2049192637]
+position = Vector2(291, 1942)
+scale = Vector2(0.634981, 0.6875)
+texture = ExtResource("8_30ivl")
+
+[node name="Screenshot20261025035924" type="Sprite2D" parent="." unique_id=445260262]
+position = Vector2(1094, 1941.6666)
+scale = Vector2(0.6294278, 0.6666667)
+texture = ExtResource("9_wvext")
+
+[node name="Screenshot20261025035944" type="Sprite2D" parent="." unique_id=985465521]
+position = Vector2(1679.6852, 2122.1553)
+scale = Vector2(0.62953997, 0.6893204)
+texture = ExtResource("10_3qwb3")
+
+[node name="Screenshot20261025040005" type="Sprite2D" parent="." unique_id=1142617302]
+position = Vector2(2073, 2125.5)
+scale = Vector2(0.6344825, 0.6836733)
+texture = ExtResource("11_e3f8q")
+
+[node name="Screenshot20261025040036" type="Sprite2D" parent="." unique_id=879194963]
+position = Vector2(1208.2616, 1678.2585)
+scale = Vector2(0.4768015, 0.48299345)
+texture = ExtResource("12_r8f4s")
+
+[node name="Screenshot20261025040113" type="Sprite2D" parent="." unique_id=2007585061]
+position = Vector2(631.68787, 511)
+scale = Vector2(0.62429905, 0.6181818)
+texture = ExtResource("13_06xqc")
+
+[node name="Screenshot20261025040131" type="Sprite2D" parent="." unique_id=1317696277]
+position = Vector2(845, 688.5)
+scale = Vector2(0.6233766, 0.71875)
+texture = ExtResource("14_6sxew")
+
+[node name="Screenshot20261025040151" type="Sprite2D" parent="." unique_id=563539879]
+position = Vector2(1261.4999, 687.7265)
+scale = Vector2(0.547297, 0.5470088)
+texture = ExtResource("15_dwpcd")
+
+[node name="Screenshot20261025040211" type="Sprite2D" parent="." unique_id=1270602445]
+position = Vector2(1477.5001, 678.5)
+scale = Vector2(0.5119765, 0.5595238)
+texture = ExtResource("16_op0dp")
+
+[node name="Screenshot20261025040232" type="Sprite2D" parent="." unique_id=313898094]
+position = Vector2(1725.7426, 505.5)
+scale = Vector2(0.51472855, 0.52678615)
+texture = ExtResource("17_1wsan")
+
+[node name="Screenshot20261025040255" type="Sprite2D" parent="." unique_id=438405957]
+position = Vector2(2026.7848, 1226)
+scale = Vector2(0.43040484, 0.44594586)
+texture = ExtResource("18_4wqr6")
+
+[node name="Screenshot20261025041019" type="Sprite2D" parent="." unique_id=1051192534]
+position = Vector2(54.21326, 1051.2028)
+scale = Vector2(0.5734158, 0.5944059)
+texture = ExtResource("19_30ivl")
+
+[node name="Screenshot20261025041111" type="Sprite2D" parent="." unique_id=532848630]
+position = Vector2(40.286037, 2013)
+scale = Vector2(0.42784834, 0.390625)
+texture = ExtResource("20_wvext")
+
+[node name="Screenshot20261025041250" type="Sprite2D" parent="." unique_id=635998586]
+position = Vector2(-426.7898, 866.1904)
+scale = Vector2(0.57961756, 0.61904836)
+texture = ExtResource("21_wvext")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=217904636]
+script = ExtResource("3_nqc2k")
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=1071286214]
+top_level = true
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 32.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_whoor")
+texture_normal = ExtResource("3_f624j")
+texture_hover = ExtResource("3_f624j")
+script = ExtResource("4_whoor")
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer/TextureButton" method="_on_pressed"]

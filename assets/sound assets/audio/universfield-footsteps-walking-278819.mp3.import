@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6b8xlt5oa1bk"
+path="res://.godot/imported/universfield-footsteps-walking-278819.mp3-497eaa3b5d36ef70a93b96ace1e3a1d0.mp3str"
+
+[deps]
+
+source_file="res://assets/sound assets/audio/universfield-footsteps-walking-278819.mp3"
+dest_files=["res://.godot/imported/universfield-footsteps-walking-278819.mp3-497eaa3b5d36ef70a93b96ace1e3a1d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
