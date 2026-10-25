@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs5pkqyadaxc2"]
 
 [ext_resource type="Texture2D" uid="uid://cl2xcy62nxcnh" path="res://assets/map assets/Gemini_Generated_Image_uur017uur017uur0.jpg" id="1_ta3x6"]
+[ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_ta3x6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(78, 272.5)
@@ -105,3 +106,6 @@ metadata/_edit_lock_ = true
 position = Vector2(-418.5, 2472)
 shape = SubResource("RectangleShape2D_njqwk")
 metadata/_edit_lock_ = true
+
+[node name="player" parent="." unique_id=841658602 instance=ExtResource("2_ta3x6")]
+position = Vector2(-447, 420)

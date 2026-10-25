@@ -173,7 +173,7 @@ script = ExtResource("1_t61fv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1323504161]
 position = Vector2(0, -34)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_t61fv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448299905]
@@ -190,7 +190,6 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_1ptfn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=120713899]
-zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1694213011]
 libraries/ = SubResource("AnimationLibrary_8y75b")
