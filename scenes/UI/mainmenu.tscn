@@ -25,9 +25,9 @@ expand_mode = 1
 [node name="start" type="TextureButton" parent="." unique_id=261898233]
 layout_mode = 0
 offset_left = 457.25
-offset_top = 362.0
+offset_top = 409.0
 offset_right = 978.6786
-offset_bottom = 534.0
+offset_bottom = 581.0
 scale = Vector2(0.7, 0.5)
 texture_normal = ExtResource("2_1nqvl")
 texture_hover = ExtResource("3_ds07i")
@@ -76,9 +76,9 @@ vertical_alignment = 1
 [node name="quit" type="TextureButton" parent="." unique_id=1506376813]
 layout_mode = 0
 offset_left = 457.25
-offset_top = 583.0
+offset_top = 523.0
 offset_right = 978.6786
-offset_bottom = 755.0
+offset_bottom = 695.0
 scale = Vector2(0.7, 0.5)
 texture_normal = ExtResource("2_1nqvl")
 texture_hover = ExtResource("3_ds07i")
