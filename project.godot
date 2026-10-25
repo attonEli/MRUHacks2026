@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="mru_hacks_2026"
-run/main_scene="uid://clvxlslmavfid"
+run/main_scene="uid://bs5pkqyadaxc2"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameState="*uid://bny18cwldolv8"
+Hud="*res://scenes/UI/hud/hud.tscn"
 
 [display]
 
