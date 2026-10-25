@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://bs5pkqyadaxc2"]
 
 [ext_resource type="Texture2D" uid="uid://cl2xcy62nxcnh" path="res://assets/map assets/Gemini_Generated_Image_uur017uur017uur0.jpg" id="1_ta3x6"]
-[ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_ta3x6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(78, 272.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(326.75, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+size = Vector2(92, 226)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
+size = Vector2(91, 230)
 
 [node name="Map" type="Sprite2D" unique_id=2093066837]
 position = Vector2(1922, 232)
@@ -71,5 +82,26 @@ position = Vector2(710.0288, 1626.4338)
 polygon = PackedVector2Array(-0.028808594, -0.4338379, -158.02881, -0.4338379, -159.02881, -357.43384, -159.02881, -357.43384, -255.02881, -357.43384, -257.0288, -261.43384, -833.0288, -261.43384, -833.0288, -531.43384, -469.0288, -531.43384, -469.0288, -744.43384, -315.0288, -601.43384, -465.0288, -753.43384, -244.02881, -752.43384, -244.02881, -832.43384, -325.0288, -832.43384, -322.0288, -1046.4338, -245.02881, -1046.4338, -245.02881, -1079.4338, 84.97119, -1079.4338, 84.97119, -902.43384, 182.97119, -902.43384, 182.97119, -1113.4338, 510.9712, -1112.4338, 510.9712, -904.43384, 588.9712, -904.43384, 590.9712, -360.43384, 570.9712, -360.43384, 570.9712, -330.43384, 433.9712, -330.43384, 433.9712, -356.43384, 340.9712, -356.43384, 340.9712, -169.43384, 327.9712, -169.43384, 327.9712, -520.43384, 188.97119, -520.43384, 188.97119, -169.43384, 156.97119, -169.43384, 155.97119, -354.43384, -0.028808594, -354.43384)
 metadata/_edit_lock_ = true
 
-[node name="player" parent="." unique_id=841658602 instance=ExtResource("2_ta3x6")]
-position = Vector2(89, 1887)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=832943331]
+position = Vector2(-346, 1589.25)
+shape = SubResource("RectangleShape2D_xrivr")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1055416296]
+position = Vector2(1894.625, 1025)
+shape = SubResource("RectangleShape2D_13qdw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=653705992]
+polygon = PackedVector2Array(-99, 725, -140, 678, -140, 615, 57, 536, 98, 591, 98, 649)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1288922711]
+position = Vector2(-160, 2474)
+shape = SubResource("RectangleShape2D_b1lj4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=222454052]
+position = Vector2(-418.5, 2472)
+shape = SubResource("RectangleShape2D_njqwk")
+metadata/_edit_lock_ = true
