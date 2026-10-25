@@ -22,6 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://d0k0n0txsag20" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041019.png" id="19_30ivl"]
 [ext_resource type="Texture2D" uid="uid://ckm16pvis3qfi" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041111.png" id="20_wvext"]
 [ext_resource type="Texture2D" uid="uid://bw8ebky33s3br" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041250.png" id="21_wvext"]
+[ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="3_3jtja"]
+[ext_resource type="PackedScene" uid="uid://dvv7j5vg8afvy" path="res://scenes/interacts/pickup/readable.tscn" id="4_dpqlu"]
+[ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="5_vuvwp"]
+[ext_resource type="PackedScene" uid="uid://bm36cx4ucx6r0" path="res://scenes/interacts/cabinet/cabinet.tscn" id="6_dpqlu"]
 
 [sub_resource type="GDScript" id="GDScript_nqc2k"]
 script/source = "extends Sprite2D
@@ -54,10 +58,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 "
-[ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="3_3jtja"]
-[ext_resource type="PackedScene" uid="uid://dvv7j5vg8afvy" path="res://scenes/interacts/pickup/readable.tscn" id="4_dpqlu"]
-[ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="5_vuvwp"]
-[ext_resource type="PackedScene" uid="uid://bm36cx4ucx6r0" path="res://scenes/interacts/cabinet/cabinet.tscn" id="6_dpqlu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(78, 272.5)
