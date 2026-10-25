@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_ta3x6"]
 [ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="3_3jtja"]
 [ext_resource type="Texture2D" uid="uid://drru8k240exmb" path="res://assets/UI/pixil-frame-0 (2).png" id="3_f624j"]
-[ext_resource type="Script" uid="uid://drtdc7dg1gs85" path="res://assets/map assets/canvas_layer.gd" id="3_nqc2k"]
 [ext_resource type="PackedScene" uid="uid://dvv7j5vg8afvy" path="res://scenes/interacts/pickup/readable.tscn" id="4_dpqlu"]
 [ext_resource type="Script" uid="uid://drp1c021453r5" path="res://assets/map assets/pause_button.gd" id="4_whoor"]
 [ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="5_vuvwp"]
@@ -71,6 +70,25 @@ size = Vector2(92, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
 size = Vector2(430, 230)
+
+[sub_resource type="GDScript" id="GDScript_30ivl"]
+script/source = "extends CanvasLayer
+
+signal pause_pressed(origin: String)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_texture_button_pressed() -> void:
+	pause_pressed.emit(\"pause_button\")
+"
 
 [sub_resource type="InputEventKey" id="InputEventKey_686vu"]
 keycode = 4194305
@@ -266,7 +284,7 @@ scale = Vector2(0.57961756, 0.61904836)
 texture = ExtResource("21_wvext")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=217904636]
-script = ExtResource("3_nqc2k")
+script = SubResource("GDScript_30ivl")
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=1071286214]
 top_level = true
