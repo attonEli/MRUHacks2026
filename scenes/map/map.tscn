@@ -235,10 +235,10 @@ b = Vector2(200.97668, 0.84391785)
 a = Vector2(-0.34887695, -68.00008)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rtlvs"]
-b = Vector2(8.036621, -0.14447021)
+b = Vector2(8, 3)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hkdab"]
-b = Vector2(-0.059692383, -52.14447)
+b = Vector2(-0.38549805, -50.85559)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_usp87"]
 b = Vector2(0.048583984, 187.59052)
@@ -315,7 +315,7 @@ b = Vector2(74.904785, 0.0005493164)
 b = Vector2(-1.5050049, -54.384995)
 
 [node name="Map" type="Sprite2D" unique_id=2093066837]
-position = Vector2(1271, -69)
+position = Vector2(1216, -74)
 texture = ExtResource("1_tqkkf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1562000247]
@@ -601,7 +601,7 @@ position = Vector2(-274.91162, 136.46338)
 shape = SubResource("SegmentShape2D_6rgx3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D5/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D2" unique_id=256084974]
-position = Vector2(-0.38549805, -67.855606)
+position = Vector2(-0.00012207031, -68.000015)
 shape = SubResource("SegmentShape2D_rtlvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D5/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D/CollisionShape2D2/CollisionShape2D" unique_id=1811407556]
@@ -704,9 +704,6 @@ shape = SubResource("SegmentShape2D_kndak")
 position = Vector2(74.40979, 0.38554382)
 shape = SubResource("SegmentShape2D_y7wq3")
 
-[node name="player" parent="." unique_id=841658602 instance=ExtResource("2_a2pkv")]
-position = Vector2(-377, -210)
-
 [node name="Button" parent="." unique_id=445816109 instance=ExtResource("3_a2pkv")]
 position = Vector2(219, -418)
 
@@ -715,3 +712,6 @@ position = Vector2(-19, 545)
 
 [node name="Button3" parent="." unique_id=1420202959 instance=ExtResource("3_a2pkv")]
 position = Vector2(669, 501)
+
+[node name="player" parent="." unique_id=841658602 instance=ExtResource("2_a2pkv")]
+position = Vector2(-575, -530)
