@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed: float = 400.0
 @export var paused_packed: PackedScene
 
-@onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
+#@onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
 
 var move_direction: Vector2 = Vector2(0,0)
 
@@ -33,11 +33,11 @@ func movement_loop() -> void:
 	
 	else:
 		$AnimatedSprite2D.play("default")
-		
-func play_footstep() -> void:
-	footstep_player.play()
 	
 	velocity = move_direction.normalized() * speed
 	
 	move_and_slide()
 	
+func play_footstep() -> void:
+	#footstep_player.play()
+	pass
