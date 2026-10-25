@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Export builds (published as GitHub Release assets instead)
+/SOS.exe
+/SOS.console.exe
+/SOS.pck
+/mru_hacks_2026.*
+/build/
