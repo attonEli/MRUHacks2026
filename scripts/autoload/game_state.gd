@@ -27,14 +27,14 @@ const COUNTDOWN_SECONDS := 30.0
 const COOLDOWN_SECONDS := 5.0 
 
 const ITEM_NAMES := {
-	KEY_X: "key_x",
-	KEY_Y: "key_y",
-	KEY_Z: "key_z",
-	KEY_MASTER: "key_master",
-	KEY_CABINET: "key_cabinet",
-	MANUAL: "switch_manual",
-	MORSE_SHEET: "morse_code_sheet",
-	MAP: "survivor_map",
+	KEY_X: "Key X",
+	KEY_Y: "Key Y",
+	KEY_Z: "Key Z",
+	KEY_MASTER: "Master Key",
+	KEY_CABINET: "Cabinet Key",
+	MANUAL: "Switch Manual",
+	MORSE_SHEET: "Morse Code Sheet",
+	MAP: "Survivor Map",
 }
 
 const SWITCH_KEYS := {
@@ -54,14 +54,8 @@ const MORSE := {
 	"5": ".....", "6": "-....", "7": "--...", "8": "---..", "9": "----.",
 }
 
-# Placeholder call signs: replace with the two call signs from the story.
-const CALL_SIGNS := {
-	"rescue": "K7R",
-	"enemy": "W3X",
-}
-
+# The rescue ending shows the player's own telegraph message instead (see hud.gd).
 const ENDINGS := {
-	"rescue": "Rescue ending text goes here.",
 	"enemy": "Enemy ending text goes here.",
 }
 
@@ -259,6 +253,23 @@ func show_document(title: String, body: String) -> void:
 	document_shown.emit(title, body)
 
 
+# Readable items (manual, map, Morse sheet) register their text here so the
+# inventory can open them again. item_id -> [title, body]
+var _documents := {}
+
+func register_document(item_id: String, title: String, body: String) -> void:
+	_documents[item_id] = [title, body]
+
+
+func can_read(item_id: String) -> bool:
+	return item_id in _documents
+
+
+func read_item(item_id: String) -> void:
+	if can_read(item_id):
+		show_document(_documents[item_id][0], _documents[item_id][1])
+
+
 # --- Telegraph -------------------------------------------------------------
 
 func to_morse(text: String) -> String:
@@ -275,12 +286,36 @@ func open_telegraph() -> void:
 	telegraph_opened.emit()
 
 
-## Gaps between letters are ignored, so only the dots and dashes have to match.
-## Returns true if the signal matched a call sign (the game ends).
-func send_telegraph(symbols: String) -> bool:
-	for ending in CALL_SIGNS:
-		if symbols == to_morse(CALL_SIGNS[ending]):
-			game_over.emit(ending)
-			return true
-	show_message("Static. Nobody answers that signal.")
-	return false
+## Signals use " " between letters and "/" between words, e.g. "... --- .../.-"
+
+## Dots and dashes as they look on screen: ".- -..." -> "• —    — • • •"
+func pretty_morse(symbols: String) -> String:
+	var words := PackedStringArray()
+	for word in symbols.split("/", false):
+		var letters := PackedStringArray()
+		for code in word.split(" ", false):
+			letters.append(code.replace(".", "• ").replace("-", "— ").strip_edges())
+		words.append("    ".join(letters))
+	return "    /    ".join(words)
+
+
+## Morse to text: "... --- .../.-" -> "SOS A". Unknown letters become "?".
+func decode_morse(symbols: String) -> String:
+	var letters := {}
+	for letter in MORSE:
+		letters[MORSE[letter]] = letter
+	var words := PackedStringArray()
+	for word in symbols.split("/", false):
+		var text := ""
+		for code in word.split(" ", false):
+			text += letters.get(code, "?")
+		words.append(text)
+	return " ".join(words)
+
+
+var telegraph_message := "" ## The last signal sent, shown on the ending screen
+
+## Any signal gets an answer, so sending always ends the game.
+func send_telegraph(symbols: String) -> void:
+	telegraph_message = symbols
+	game_over.emit("rescue")

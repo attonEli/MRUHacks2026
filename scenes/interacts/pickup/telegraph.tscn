@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://cpgp5vt60rh5c"]
 
 [ext_resource type="Script" uid="uid://bkf76qkjxdsic" path="res://scenes/interacts/pickup/telegraph.gd" id="1_lvt6r"]
-[ext_resource type="Texture2D" uid="uid://baqnqn7uuee1k" path="res://icon.svg" id="2_2ep87"]
+[ext_resource type="Texture2D" uid="uid://del7hl7e3p4b2" path="res://assets/interacts/power_switch/telegraph_control_room.jpg" id="2_lvt6r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y511w"]
 radius = 30.0
 
 [node name="Telegraph" type="Area2D" unique_id=1924370088]
 script = ExtResource("1_lvt6r")
-display_name = "Telegram"
+display_name = "Telegraph"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909320663]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_2ep87")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_lvt6r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=197226952]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_y511w")

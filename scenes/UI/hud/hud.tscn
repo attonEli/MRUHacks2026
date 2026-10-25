@@ -47,7 +47,7 @@ grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 34
-text = "POWER: 15.0 s"
+text = "TIMER: 15.0 s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -120,6 +120,50 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Cancel (Esc)"
 
+[node name="InventoryPanel" type="PanelContainer" parent="Root" unique_id=1846203957]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -180.0
+offset_right = -24.0
+offset_bottom = 180.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/InventoryPanel" unique_id=1203948576]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="InventoryTitle" type="Label" parent="Root/InventoryPanel/VBox" unique_id=667290413]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "INVENTORY"
+horizontal_alignment = 1
+
+[node name="InventoryList" type="VBoxContainer" parent="Root/InventoryPanel/VBox" unique_id=1590437821]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="InventoryHint" type="Label" parent="Root/InventoryPanel/VBox" unique_id=938175024]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+text = "Click a [Read] item to open it
+Press I to close"
+horizontal_alignment = 1
+
 [node name="DocumentPanel" type="PanelContainer" parent="Root" unique_id=1618792830]
 unique_name_in_owner = true
 layout_mode = 1
@@ -174,10 +218,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -170.0
-offset_right = 340.0
-offset_bottom = 170.0
+offset_left = -420.0
+offset_top = -290.0
+offset_right = 420.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
@@ -199,6 +243,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.75, 1)
 theme_override_font_sizes/font_size = 18
 text = "Tap SPACE = dot   ·   Hold SPACE = dash
+Pause = next letter   ·   Long pause = new word
 Backspace = undo   ·   Enter = send   ·   Esc = leave"
 horizontal_alignment = 1
 
@@ -215,12 +260,36 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="DecodedLabel" type="Label" parent="Root/TelegraphPanel/VBox" unique_id=1739528064]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.85, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="LeaveButton" type="Button" parent="Root/TelegraphPanel/VBox" unique_id=884612093]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Leave (Esc)"
+
+[node name="MorseSheet" type="VBoxContainer" parent="Root/TelegraphPanel/VBox" unique_id=1371604928]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MorseSeparator" type="HSeparator" parent="Root/TelegraphPanel/VBox/MorseSheet" unique_id=702913548]
+layout_mode = 2
+
+[node name="MorseGrid" type="GridContainer" parent="Root/TelegraphPanel/VBox/MorseSheet" unique_id=1958027361]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 2
+columns = 6
 
 [node name="MessageTimer" type="Timer" parent="." unique_id=530155696]
 unique_name_in_owner = true

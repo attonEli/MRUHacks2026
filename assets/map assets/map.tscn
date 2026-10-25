@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bs5pkqyadaxc2"]
 
 [ext_resource type="Texture2D" uid="uid://cl2xcy62nxcnh" path="res://assets/map assets/Gemini_Generated_Image_uur017uur017uur0.jpg" id="1_ta3x6"]
+[ext_resource type="Texture2D" uid="uid://dg8gkykdpfgd7" path="res://assets/interacts/power_switch/shark3.png" id="2_dwpcd"]
 [ext_resource type="PackedScene" uid="uid://iso4lr7aqfp0" path="res://scenes/interacts/power_switch/power_switch.tscn" id="2_f624j"]
 [ext_resource type="PackedScene" uid="uid://8x5esfvepgfa" path="res://scenes/characters/player/player.tscn" id="2_ta3x6"]
+[ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="3_3jtja"]
 [ext_resource type="Texture2D" uid="uid://drru8k240exmb" path="res://assets/UI/pixil-frame-0 (2).png" id="3_f624j"]
 [ext_resource type="Script" uid="uid://drtdc7dg1gs85" path="res://assets/map assets/canvas_layer.gd" id="3_nqc2k"]
+[ext_resource type="PackedScene" uid="uid://dvv7j5vg8afvy" path="res://scenes/interacts/pickup/readable.tscn" id="4_dpqlu"]
 [ext_resource type="Script" uid="uid://drp1c021453r5" path="res://assets/map assets/pause_button.gd" id="4_whoor"]
+[ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="5_vuvwp"]
+[ext_resource type="PackedScene" uid="uid://bm36cx4ucx6r0" path="res://scenes/interacts/cabinet/cabinet.tscn" id="6_dpqlu"]
 [ext_resource type="Texture2D" uid="uid://ds1b6w6ddif6r" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035730.png" id="6_vh5x3"]
 [ext_resource type="Texture2D" uid="uid://dl4lrytla1o5w" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035835.png" id="7_mw81q"]
 [ext_resource type="Texture2D" uid="uid://l0c5ijbygdj" path="res://assets/map assets/ledges/Screenshot 2026-10-25 035859.png" id="8_30ivl"]
@@ -22,10 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://d0k0n0txsag20" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041019.png" id="19_30ivl"]
 [ext_resource type="Texture2D" uid="uid://ckm16pvis3qfi" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041111.png" id="20_wvext"]
 [ext_resource type="Texture2D" uid="uid://bw8ebky33s3br" path="res://assets/map assets/ledges/Screenshot 2026-10-25 041250.png" id="21_wvext"]
-[ext_resource type="PackedScene" uid="uid://cubf40iw3bxih" path="res://scenes/interacts/pickup/pickup.tscn" id="3_3jtja"]
-[ext_resource type="PackedScene" uid="uid://dvv7j5vg8afvy" path="res://scenes/interacts/pickup/readable.tscn" id="4_dpqlu"]
-[ext_resource type="PackedScene" uid="uid://cpgp5vt60rh5c" path="res://scenes/interacts/pickup/telegraph.tscn" id="5_vuvwp"]
-[ext_resource type="PackedScene" uid="uid://bm36cx4ucx6r0" path="res://scenes/interacts/cabinet/cabinet.tscn" id="6_dpqlu"]
 
 [sub_resource type="GDScript" id="GDScript_nqc2k"]
 script/source = "extends Sprite2D
@@ -69,7 +70,7 @@ size = Vector2(326.75, 144)
 size = Vector2(92, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
-size = Vector2(91, 230)
+size = Vector2(430, 230)
 
 [sub_resource type="InputEventKey" id="InputEventKey_686vu"]
 keycode = 4194305
@@ -167,9 +168,20 @@ shape = SubResource("RectangleShape2D_b1lj4")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=222454052]
+visible = false
 position = Vector2(-418.5, 2472)
 shape = SubResource("RectangleShape2D_njqwk")
 metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1760374479]
+position = Vector2(-571, -64)
+shape = SubResource("RectangleShape2D_njqwk")
+
+[node name="Shark3" type="Sprite2D" parent="StaticBody2D" unique_id=1080009404]
+position = Vector2(1772.9999, 1500)
+rotation = -0.9704031
+scale = Vector2(2.7471032, 2.7471032)
+texture = ExtResource("2_dwpcd")
 
 [node name="player2" parent="." unique_id=874414214 instance=ExtResource("2_ta3x6")]
 position = Vector2(-541, 253)
@@ -278,7 +290,7 @@ position = Vector2(1217, 1241)
 switch_number = 2
 
 [node name="switch3" parent="Interactables" unique_id=1726894984 instance=ExtResource("2_f624j")]
-position = Vector2(1183, 2215)
+position = Vector2(1097, 2265)
 switch_number = 3
 
 [node name="switch4" parent="Interactables" unique_id=36143093 instance=ExtResource("2_f624j")]
@@ -303,15 +315,16 @@ item_id = "key_cabinet"
 [node name="Manual" parent="Interactables" unique_id=388296552 instance=ExtResource("4_dpqlu")]
 position = Vector2(-602, 2591)
 title = "Breaker Manual"
-body = "BREAKER RESTART PROCEDURE
+body = "SWITCH RESTART PROCEDURE
 
-The emergency breakers must be switched on in this exact order:
+The switches must be activated in this exact order:
 
         2   →   1   →   3   →   4
 
-Once the first breaker is on you have 15 seconds to finish the sequence. If you take too long, or use the wrong order, the system trips and every breaker resets.
+Once the first switch is on you have 30 seconds to finish the sequence. If you take too long, or use the wrong order, the system trips and every switch resets.
 
-Each breaker is locked and needs its own key."
+Each switch is locked and needs its own key."
+item_id = "manual"
 display_name = "Manual"
 
 [node name="Telegraph" parent="Interactables" unique_id=1954683485 instance=ExtResource("5_vuvwp")]
@@ -323,7 +336,8 @@ position = Vector2(2098, 356)
 [node name="Map" parent="Interactables" unique_id=1035613551 instance=ExtResource("4_dpqlu")]
 position = Vector2(2108, 1139)
 title = "Map"
-body = "who the other group is and how to reach them, including the call sign and a note to use the telegraph in the control room"
+body = "who the other group is and how to reach them, including a note to use the telegraph in the control room"
+item_id = "map"
 display_name = "Map"
 
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer/TextureButton" method="_on_pressed"]

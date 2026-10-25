@@ -5,6 +5,7 @@ extends CanvasLayer
 ## - KeyPicker: opens when a locked switch is used, so the player picks a key.
 ## - DocumentPanel: shows notes/manuals, and the ending text when the game is won.
 ## - TelegraphPanel: the Morse minigame (its own script, telegraph_panel.gd).
+## - InventoryPanel: toggled with I, lists the items the player is carrying.
 ## Runs as an autoload (process_mode = Always) so it keeps working while the game
 ## is paused for the key picker.
 
@@ -27,6 +28,8 @@ const COLOR_COOLDOWN := Color(0.6, 0.6, 0.6)
 @onready var doc_title: Label = %DocTitle
 @onready var doc_body: Label = %DocBody
 @onready var doc_close_button: Button = %DocCloseButton
+@onready var inventory_panel: PanelContainer = %InventoryPanel
+@onready var inventory_list: VBoxContainer = %InventoryList
 
 var _pending_switch := 0
 var _game_finished := false
@@ -37,6 +40,7 @@ func _ready() -> void:
 	message_panel.hide()
 	key_picker.hide()
 	document_panel.hide()
+	inventory_panel.hide()
 
 	message_timer.wait_time = MESSAGE_SECONDS
 	message_timer.timeout.connect(message_panel.hide)
@@ -47,6 +51,8 @@ func _ready() -> void:
 	GameState.key_choice_needed.connect(_on_key_choice_needed)
 	GameState.document_shown.connect(_on_document_shown)
 	GameState.game_over.connect(_on_game_over)
+	GameState.item_added.connect(_refresh_inventory.unbind(1))
+	GameState.item_removed.connect(_refresh_inventory.unbind(1))
 
 
 func _process(_delta: float) -> void:
@@ -58,7 +64,7 @@ func _process(_delta: float) -> void:
 func _update_countdown() -> void:
 	var time_left := GameState.get_countdown_left()
 	if time_left > 0.0:
-		countdown_label.text = "POWER: %.1f s" % time_left
+		countdown_label.text = "TIMER: %.1f s" % time_left
 		if time_left <= COUNTDOWN_WARNING_SECONDS:
 			countdown_label.modulate = COLOR_WARNING
 		else:
@@ -125,6 +131,54 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif document_panel.visible and event.is_action_pressed("ui_cancel"):
 		_close_document()
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("inventory"):
+		_toggle_inventory()
+		get_viewport().set_input_as_handled()
+
+
+# --- Inventory -------------------------------------------------------------
+
+func _toggle_inventory() -> void:
+	inventory_panel.visible = not inventory_panel.visible
+	_refresh_inventory()
+
+
+func _refresh_inventory() -> void:
+	for child in inventory_list.get_children():
+		inventory_list.remove_child(child)
+		child.queue_free()
+
+	if GameState.inventory.is_empty():
+		_add_inventory_line("Nothing yet.", Color(0.6, 0.6, 0.55))
+		return
+	for item_id in GameState.inventory:
+		var item_name: String = GameState.ITEM_NAMES.get(item_id, item_id)
+		if GameState.can_read(item_id):
+			_add_readable_line(item_name, item_id)
+		else:
+			_add_inventory_line("• " + item_name, Color(0.9, 0.9, 0.85))
+
+
+## Readable items are buttons: click to open the document again.
+func _add_readable_line(item_name: String, item_id: String) -> void:
+	var button := Button.new()
+	button.text = "• %s  [Read]" % item_name
+	button.flat = true
+	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	button.focus_mode = Control.FOCUS_NONE # So WASD / Space still go to the player
+	button.add_theme_font_size_override("font_size", 20)
+	button.add_theme_color_override("font_color", Color(1.0, 0.85, 0.5))
+	button.pressed.connect(GameState.read_item.bind(item_id))
+	inventory_list.add_child(button)
+
+
+func _add_inventory_line(text: String, color: Color) -> void:
+	var line := Label.new()
+	line.text = text
+	line.add_theme_font_size_override("font_size", 20)
+	line.add_theme_color_override("font_color", color)
+	line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	inventory_list.add_child(line)
 
 
 # --- Document popup / ending -----------------------------------------------
@@ -147,5 +201,13 @@ func _close_document() -> void:
 
 func _on_game_over(ending: String) -> void:
 	_game_finished = true
-	_on_document_shown("THE END", GameState.ENDINGS[ending])
+	var text: String
+	if ending == "rescue":
+		text = "%s\n\n%s" % [
+			GameState.decode_morse(GameState.telegraph_message),
+			GameState.pretty_morse(GameState.telegraph_message),
+		]
+	else:
+		text = GameState.ENDINGS[ending]
+	_on_document_shown("THE END", text)
 	doc_close_button.text = "Quit"

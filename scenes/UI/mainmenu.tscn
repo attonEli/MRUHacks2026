@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b6guj6i5xllig" path="res://assets/UI/Main_menu_title.jpeg" id="1_2gien"]
 [ext_resource type="Texture2D" uid="uid://dht6rf46y2rwc" path="res://assets/UI/menu_button_off.png" id="2_1nqvl"]
 [ext_resource type="Texture2D" uid="uid://dn1ouo1yrdx3f" path="res://assets/UI/menu_button_on.png" id="3_ds07i"]
+[ext_resource type="Texture2D" uid="uid://c0pxky0xcbgj7" path="res://scenes/UI/sos_in_morse-removebg-preview.png" id="5_ds07i"]
 
 [node name="mainMenu" type="Control" unique_id=466216176]
 layout_mode = 3
@@ -95,6 +96,11 @@ theme_override_font_sizes/font_size = 55
 text = "[ Quit ]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SosInMorseRemovebgPreview" type="Sprite2D" parent="." unique_id=565349379]
+position = Vector2(634.43207, 312.62463)
+scale = Vector2(2.136024, 1.7506702)
+texture = ExtResource("5_ds07i")
 
 [connection signal="pressed" from="start" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
