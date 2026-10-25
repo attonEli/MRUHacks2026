@@ -69,7 +69,7 @@ size = Vector2(326.75, 144)
 size = Vector2(92, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
-size = Vector2(430, 230)
+size = Vector2(79, 230)
 
 [sub_resource type="GDScript" id="GDScript_30ivl"]
 script/source = "extends CanvasLayer
@@ -186,8 +186,7 @@ shape = SubResource("RectangleShape2D_b1lj4")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=222454052]
-visible = false
-position = Vector2(-418.5, 2472)
+position = Vector2(-415.5, 2472)
 shape = SubResource("RectangleShape2D_njqwk")
 metadata/_edit_lock_ = true
 
