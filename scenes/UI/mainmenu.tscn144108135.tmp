@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://cc16yx6g6h472"]
+
+[ext_resource type="Script" uid="uid://ckugm3refaqct" path="res://scenes/UI/mainmenu.gd" id="1_1nqvl"]
+[ext_resource type="Texture2D" uid="uid://b6guj6i5xllig" path="res://assets/UI/Main_menu_title.jpeg" id="1_2gien"]
+[ext_resource type="Texture2D" uid="uid://dht6rf46y2rwc" path="res://assets/UI/menu_button_off.png" id="2_1nqvl"]
+[ext_resource type="Texture2D" uid="uid://dn1ouo1yrdx3f" path="res://assets/UI/menu_button_on.png" id="3_ds07i"]
+
+[node name="mainMenu" type="Control" unique_id=466216176]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nqvl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=128773224]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_2gien")
+expand_mode = 1
+
+[node name="start" type="TextureButton" parent="." unique_id=261898233]
+layout_mode = 0
+offset_left = 457.25
+offset_top = 362.0
+offset_right = 978.6786
+offset_bottom = 534.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("2_1nqvl")
+texture_hover = ExtResource("3_ds07i")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label3" type="Label" parent="start" unique_id=1125293459]
+layout_mode = 0
+offset_left = 2.5000076
+offset_top = 8.0
+offset_right = 518.2143
+offset_bottom = 152.0
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 55
+text = "[ Start ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="options" type="TextureButton" parent="." unique_id=2038336770]
+layout_mode = 0
+offset_left = 457.25
+offset_top = 472.0
+offset_right = 978.6786
+offset_bottom = 644.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("2_1nqvl")
+texture_hover = ExtResource("3_ds07i")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="options" unique_id=1863387001]
+layout_mode = 0
+offset_left = 2.5000076
+offset_top = 6.0
+offset_right = 519.6429
+offset_bottom = 150.0
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 55
+text = "[ Options ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="TextureButton" parent="." unique_id=1506376813]
+layout_mode = 0
+offset_left = 457.25
+offset_top = 583.0
+offset_right = 978.6786
+offset_bottom = 755.0
+scale = Vector2(0.7, 0.5)
+texture_normal = ExtResource("2_1nqvl")
+texture_hover = ExtResource("3_ds07i")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="quit" unique_id=620089686]
+layout_mode = 0
+offset_left = 2.4999847
+offset_top = 4.0
+offset_right = 519.6429
+offset_bottom = 150.0
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 55
+text = "[ Quit ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="start" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_start_pressed"]
