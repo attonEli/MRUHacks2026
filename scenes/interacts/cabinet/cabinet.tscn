@@ -1,13 +1,14 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bm36cx4ucx6r0"]
 
-[ext_resource type="Script" path="res://scenes/interacts/cabinet/cabinet.gd" id="1_cab"]
+[ext_resource type="Script" uid="uid://i1xdfhn157n0" path="res://scenes/interacts/cabinet/cabinet.gd" id="1_cab"]
 [ext_resource type="Texture2D" uid="uid://baqnqn7uuee1k" path="res://icon.svg" id="2_icon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cab"]
-size = Vector2(72, 72)
+size = Vector2(140, 140)
 
 [node name="Cabinet" type="Area2D" unique_id=1402957713]
 script = ExtResource("1_cab")
+display_name = "Cabinet"
 title = "Morse Code"
 body = "• = short tap      — = long press
 
